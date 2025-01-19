@@ -6,8 +6,6 @@ import axios from 'axios'
 function RadioNitrozRegister() {
   
   const [first, setfirst] = useState();
-  const [middle, setmiddle] = useState();
-  const [last, setlast] = useState();
   const [Department, setDepartment] = useState();
   // const [red, setred] = useState();
   const [roll, setroll] = useState();
@@ -20,26 +18,25 @@ function RadioNitrozRegister() {
   const [RateCreativity, setRateCreativity] = useState();
   const [RateManagement, setRateManagement] = useState();
   const [RateHardworking, setRateHardworking] = useState();
-  const [Ratesense, setRatesense] = useState();
   const [formerror, setformerror] = useState();
 
 
-  const [regborder, setregborder] = useState('yellow-300');
+  // const [regborder, setregborder] = useState('yellow-300');
   const [rollborder, setrrollborder] = useState('yellow-300');
-  const [yearborder, setyearborder] = useState('yellow-300');
+  // const [yearborder, setyearborder] = useState('yellow-300');
   const [mobborder, setmobborder] = useState('yellow-300')
 
 
-  const handleinput4=(e)=>{
-    const  reg=e.target.value;
-    if ((reg.length)< 8){
-      setregborder('red-500');
-    }
-    else{
-      setregborder('yellow-300');
-    }
-    setDepartment(reg)
-  }
+  // const handleinput4=(e)=>{
+  //   const  reg=e.target.value;
+  //   if ((reg.length)< 8){
+  //     setregborder('red-500');
+  //   }
+  //   else{
+  //     setregborder('yellow-300');
+  //   }
+  //   setDepartment(reg)
+  // }
   const handleinput5=(e)=>{
     const  rollno=e.target.value;
     setroll(rollno);
@@ -50,15 +47,9 @@ function RadioNitrozRegister() {
       setrrollborder('yellow-300');
     }
   }
-  const handleinput6=(e)=>{
+  const useryear=(e)=>{
     const  yearstudy=e.target.value;
     setyear(yearstudy);
-    if ((yearstudy.length)<4 | (yearstudy.length)>4){
-      setyearborder('red-500');
-    }
-    else{
-        setyearborder('yellow-300');
-    }
   }
   const handleinput7=(e)=>{
     const  mob=e.target.value
@@ -71,11 +62,17 @@ function RadioNitrozRegister() {
     }
   }
 
+  // form submit function
   const getfulldata=async (e)=>{
     e.preventDefault();
     // const notify = () => toast("Wow so easy!")
+    // Form validation
+    if (!first || !Department || !roll || !year || !mobile || !email || !message || !clubpre || !webdev || !RateCreativity || !RateManagement || !RateHardworking) {
+      setformerror('Please fill in all fields.');
+      return;
+    }
     
-      axios.post("https://rn-backend-8wgt.onrender.com/formdata",{first,middle,last,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking,Ratesense})
+      axios.post("https://rn-backend-8wgt.onrender.com/formdata",{first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking})
       .then(res =>{
         if(res.status===200){
           toast.success("Submited")
@@ -87,7 +84,9 @@ function RadioNitrozRegister() {
       })
       .catch(err =>{
         setformerror(err)
-      })    
+        console.log(err)
+      })
+      console.log(first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking)  
   }
   return (
     <>
@@ -133,70 +132,77 @@ function RadioNitrozRegister() {
     <h2 className='text-center'>{formerror}</h2>
 
     <form action='/formdata' method='post' onSubmit={getfulldata} className='p-[3vh] text-white grid xl:grid-cols-3 xl:grid-rows-4  lg:grid-cols-2 lg:grid-rows-6 md:grid-cols-2 md:grid-rows-7 sm:grid-cols-2 sm:grid-rows-7 vmd:grid-cols-1 xl:gap-[2vh] lg:gap-[2vh] md:gap-[3vh] sm:gap-[3vh] vmd:gap-[5vh] place-items-center'>
-      {/* first input */}
+      {/* name */}
       <div className='flex flex-col gap-2'>
-      <h4 className='vmd:text-[20px]'>First Name</h4>
+      <h4 className='vmd:text-[20px]'>Name</h4>
       <input type='text' required onChange={(e)=>{setfirst(e.target.value)}} name={"n1"} placeholder='First Name' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl  hover:opacity-75 transition-all focus:bg-slate-600 '/>
       </div>
-      <div className='flex flex-col gap-2'>
-      <h4 className='vmd:text-[20px]'>Middle Name</h4>
-      <input type='text' required onChange={(e)=>{setmiddle(e.target.value)}} name={"n2"} placeholder='Middle Name' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
-      </div>
-      <div className='flex flex-col gap-2'>
-      <h4 className='vmd:text-[20px] text-white'>Last Name</h4>
-      <input type='text' required onChange={(e)=>{setlast(e.target.value)}} name={"n3"} placeholder='Last Name' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
-      </div>
-      {/* second input */}
+      {/* Department */}
       <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Department</h4>
-      <input type='text' required onChange={handleinput4} name={"n4"} placeholder='Department' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-${regborder}   bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600`}/>
-      </div>
-      {/* third input */}
-      
-      {/* fourth input */}
-      
-      {/* fifth input */}
+      {/* <input type='text' required onChange={handleinput4} name={"n4"} placeholder='Department' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-${regborder}   bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600`}/> */}
+      <select onChange={(e)=>{setDepartment(e.target.value)}} className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600`}>
+    <option>Select Department</option>
+    <option value="Computer Science">Computer Science Engineering</option>
+    <option value="Mathematics & Computing">Mathematics & Computing</option>
+    <option value="Electronics & Communication">Electronics & Communication Engineering</option>
+    <option value="Mechanical Engineering">Mechanical Engineering</option>
+    <option value="Civil Engineering">Civil Engineering</option>
+    <option value="Electrical Engineering">Electrical Engineering</option>
+    <option value="Chemical Engineering">Chemical Engineering</option>
+    <option value="Biotechnology">Biotechnology</option>
+    <option value="Biotechnology">Metallurgical and Materials</option>
+</select>
+
+      </div>      
+      {/* Roll No. */}
       <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Roll No.</h4>
       <input type='text' required onChange={handleinput5} name={"n5"} placeholder='Roll No.' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-${rollborder} bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  `}/>
       </div>
-      {/* sixth input */}
+      {/* year */}
       <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Year</h4>
-      <input type='number' required onChange={handleinput6} name={"n6"} placeholder='2024 or 2025' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-${yearborder} bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  `}/>
+      <input type='number' required onChange={useryear} name={"n6"} placeholder='2023 or 2024 ' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] border-yellow-300 outline-none border-b-[3px]  bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  `}/>
+      {/* <select onClick={useryear} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
+          <option>Select Year</option>
+          <option>1st year</option>
+          <option>2nd year</option>
+        </select> */}
       </div>
-       {/* seventh input */}
+       {/* Mobile No */}
        <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Mobile No.</h4>
       <input type='number' required onChange={handleinput7} name={"n7"} placeholder='Mobile No.' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-${mobborder} bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  `}/>
       </div>
-       {/* eighth input */}
+       {/* E-mail */}
        <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>E-mail</h4>
       <input type='email' required onChange={(e)=>{setemail(e.target.value)}} name={"n8"} placeholder='E-mail' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
       </div>
-      {/* eighth input */}
+      {/*Message to us */}
       <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Message to us</h4>
       <input type='text' required onChange={(e)=>{setmessage(e.target.value)}} name={"n9"} placeholder='Message to us' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
       </div>
-       {/* ninth input */}
+       {/* Club preference */}
        <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Club preference</h4>
-      <textarea type='textarea' required onChange={(e)=>{setclubpre(e.target.value)}} name={"n10"} placeholder='Club preference' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
+      <textarea type='textarea' onChange={(e)=>{setclubpre(e.target.value)}} name={"n10"} placeholder='Club preference' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
       </div>
-       {/* tenth input */}
+       {/* Domain */}
       <div className='flex flex-col gap-2'>
         <h4>Domain</h4>
-        <select onChange={(e)=>{setwebdev(e.target.value)}} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
+        <select required onChange={(e)=>{setwebdev(e.target.value)}} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
           <option>Select Your Domain</option>
           <option>Web Development</option>
           <option>Graphic Designing</option>
           <option>Content Writing</option>
-          <option>Event Management</option>
+          <option>Event & Public Speaking</option>
           <option>Video Editing</option>
         </select>
       </div>
+      {/* Rate YourSelf in creativity */}
       <div className='flex flex-col gap-2'>
       <h4>Rate YourSelf in creativity</h4>
         <select onChange={(e)=>{setRateCreativity(e.target.value)}} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
@@ -208,6 +214,7 @@ function RadioNitrozRegister() {
           <option>5</option>
         </select>
       </div>
+      {/* Management Skill? */}
       <div className='flex flex-col gap-2'>
       <h4>Rate YourSelf in Management Skills</h4>
         <select onChange={(e)=>{setRateManagement(e.target.value)}} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
@@ -230,31 +237,9 @@ function RadioNitrozRegister() {
           <option>5</option>
         </select>
       </div>
-      <div className='flex flex-col gap-2'>
-      <h4>Rate YourSelf in Sense of humour</h4>
-        <select onChange={(e)=>{setRatesense(e.target.value)}} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-       {/* eleventh input */}
-       {/* <div>
-        <h4>Rate YourSelf out of 5 in the following skills</h4>
-        <div>
-          <input type='checkbox'/><h4>Web Development</h4>
-          <input type='checkbox'/><h4>Content Writing</h4>
-          <input type='checkbox'/><h4>Graphic Designing</h4>
-          <input type='checkbox'/><h4>Event Management</h4>
-          <input type='checkbox'/><h4>Video Editing</h4>
-          <input type='checkbox'/><h4>Public Speaking</h4>
-        </div>
-       </div> */}
+
        <div>
-        <button type='submit' className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white hover:font-mono duration-500 bg-gradient-to-tr from-red-400 to-purple-500 hover:border-opacity-50 ' >Submit</button>
+        <button type='submit' className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400' >Submit</button>
       </div>
 
     </form>

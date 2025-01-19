@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { BiMobile } from 'react-icons/bi'
 import { MdEmail} from 'react-icons/md'
 import { BsInstagram } from 'react-icons/bs'
 import { FaFacebook } from 'react-icons/fa'
@@ -20,13 +19,8 @@ function Contact() {
       <div className='flex gap-5 flex-col'>
 
       <motion.h3 whileInView={{opacity:1}} transition={{duration:2}} className='font-bold opacity-0 sm:flex flex-col gap-4'>
-      <p><BiMobile className='text-blue-600 vmd:text-[36px] sm:text-[40px] lg:text-[60px] hover:rotate-6 transition-all'/></p>
-      <p className='lg:text-[32px] sm:text-[25px] vmd:text-[20px] text-black'>+91 900000000</p>
-      </motion.h3>
-
-      <motion.h3 whileInView={{opacity:1}} transition={{duration:2}} className='font-bold opacity-0 sm:flex flex-col gap-4'>
       <p><MdEmail className='text-red-500 vmd:text-[36px] sm:text-[40px] lg:text-[60px] hover:translate-y-3 transition-all '/></p>
-      <p className='lg:text-[32px] sm:text-[25px] vmd:text-[20px] text-black'>abcd@gmail.com</p>
+      <p className='lg:text-[32px] sm:text-[25px] vmd:text-[20px] text-white'>radionitroz.nitdgp@gmail.com</p>
       </motion.h3>
 
     <br/>
@@ -38,9 +32,14 @@ function Contact() {
         <Link to={"https://www.linkedin.com/company/radio-nitroz-nitdgp/"}>
         <FaLinkedin className='text-blue-500  hover:text-slate-300 hover:skew-x-6 hover:scale-105 hover:skew-y-6 transition-all vmd:text-[40px] sm:text-[50px]'/>
         </Link>
-        <Link>
+        <Link to={"https://www.facebook.com/radionitroz.nitdgp"}>
         <FaFacebook className='text-blue-500 hover:text-slate-300 hover:skew-x-6 hover:scale-105 hover:skew-y-6 transition-all vmd:text-[40px] sm:text-[50px]'/>
         </Link>
+      </div>
+
+      <div className='flex items-center justify-center flex-col'>
+        <p className='text-center text-white mt-[5%] vmd:text-[20px]'>Visit Our Website</p>
+        <Link to={"https://radionitroz.in/"} className='text-center no-underline text-yellow-300 hover:text-blue-500 focus:text-red-500 border-b-2 border-yellow-500 border-dotted'>RadioNitroz.com</Link>
       </div>
       
       </div>

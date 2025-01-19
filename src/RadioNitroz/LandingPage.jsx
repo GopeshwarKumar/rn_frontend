@@ -43,7 +43,7 @@ const LandingPage = () => {
 
     {/* Logo */}
     <div className="flex items-center rounded-full shadow-2xl hover:shadow-rose-600 duration-200">
-        <img src="/assets/RnbgImage.jpg" alt="Logo" className="rnlogonavbar sm:h-[60px] vmd:h-[40px] sm:w-[70px] vmd:w-[40px] rounded-full  hover:skew-x-2 hover:skew-y-2 transition-all " />
+        <img src="/assets/navbarlogo.png" alt="Logo" className="rnlogonavbar sm:h-[60px] vmd:h-[40px] sm:w-[70px] vmd:w-[40px] rounded-full  hover:scale-125 duration-300 transition-all sm:translate-x-5 mb:translate-x-2 " />
         {/* <h1 className='text-pink-600 font-extrabold text-4xl'>R<sup className='font-bold'>N</sup></h1> */}
       </div>
 
@@ -84,8 +84,7 @@ const LandingPage = () => {
     <Link onClick={gotocontactsection} className="font-bold font-serif no-underline text-white hover:text-yellow-400">Contact</Link>
   </div>}
     
-
-    <div style={{backgroundImage:'url("/assets/RnbgImage.jpg")' }}
+    <div style={{backgroundImage:'url("/assets/rn.2926f3c0.jpg")' }}
       className="landingRadioBg relative flex items-center justify-center h-screen bg-cover bg-center"
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
