@@ -72,14 +72,11 @@ const LandingPage = () => {
           
         </div>
       )} */}
-
-
-
     </nav>
 
     {isOpen && 
     <div className="mobilenav flex z-40 relative flex-col items-center justify-center space-y-4 lg:text-[20px] p-10 bg-slate-700">
-    <Link  className="font-bold font-serif no-underline text-white hover:text-yellow-400">Home</Link>
+    <Link onClick={gotoregistersection} className="font-bold font-serif no-underline text-white hover:text-yellow-400">Register</Link>
     <Link onClick={gotoaboutsection} className="font-bold font-serif no-underline text-white hover:text-yellow-400 ">About</Link>
     <Link onClick={gotocontactsection} className="font-bold font-serif no-underline text-white hover:text-yellow-400">Contact</Link>
   </div>}

@@ -25,9 +25,9 @@ function Contact() {
 
     <br/>
 
-      <div className='flex flex-row items-center justify-around '>
+      <div className='flex flex-row items-center sm:justify-around vmd:justify-center vmd:gap-4'>
         <Link to={"https://www.instagram.com/accounts/login/?next=%2Fradionitroz.nitdgp%2F&source=omni_redirect"}>
-        <BsInstagram className='text-pink-500 hover:text-slate-300 hover:skew-x-6 hover:scale-105 hover:skew-y-6 transition-all vmd:text-[40px] sm:text-[50px]'/>
+        <BsInstagram className='text-blue-500 hover:text-pink-500 hover:skew-x-6 hover:scale-105 hover:skew-y-6 transition-all vmd:text-[40px] sm:text-[50px]'/>
         </Link>
         <Link to={"https://www.linkedin.com/company/radio-nitroz-nitdgp/"}>
         <FaLinkedin className='text-blue-500  hover:text-slate-300 hover:skew-x-6 hover:scale-105 hover:skew-y-6 transition-all vmd:text-[40px] sm:text-[50px]'/>

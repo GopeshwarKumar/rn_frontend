@@ -133,9 +133,9 @@ function RadioNitrozRegister() {
         <h4 className='vmd:text-[20px]'>Year</h4>
       <input type='number' required onChange={useryear} name={"n6"} placeholder='2023 or 2024 ' className={`xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] border-yellow-300 outline-none border-b-[3px]  bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  `}/>
       {/* <select onClick={useryear} className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '>
-          <option>Select Year</option>
-          <option>1st year</option>
-          <option>2nd year</option>
+          <option value={"Select Year"}>Select Year</option>
+          <option value={"1st year"}>1st year</option>
+          <option value={"2nd year"}>2nd year</option>
         </select> */}
       </div>
        {/* Mobile No */}
@@ -207,8 +207,8 @@ function RadioNitrozRegister() {
       </div>
       {/* submit */}
        <div>
-        <button type='submit' disabled={loading} className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400' >Submit</button>
-        {loading && <p className='text-red-700 text-center font-bold'>Saving data...</p>}
+        <button type='submit' disabled={loading} className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400 hover:opacity-60' >Submit</button>
+        {loading && <p className='text-green-500 text-center font-bold'>Saving data...</p>}
       </div>
     </form>
     </div>
