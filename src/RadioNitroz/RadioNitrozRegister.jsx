@@ -19,6 +19,7 @@ function RadioNitrozRegister() {
   const [RateManagement, setRateManagement] = useState();
   const [RateHardworking, setRateHardworking] = useState();
   const [formerror, setformerror] = useState();
+  const [loading, setloading] = useState(false);
 
 
   // const [regborder, setregborder] = useState('yellow-300');
@@ -65,6 +66,7 @@ function RadioNitrozRegister() {
   // form submit function
   const getfulldata=async (e)=>{
     e.preventDefault();
+    setloading(true);
     // const notify = () => toast("Wow so easy!")
     // Form validation
     if (!first || !Department || !roll || !year || !mobile || !email || !message || !clubpre || !webdev || !RateCreativity || !RateManagement || !RateHardworking) {
@@ -77,7 +79,7 @@ function RadioNitrozRegister() {
         if(res.status===200){
           toast.success("Submited")
           window.scrollTo({
-            top: 0, // Change this value to your desired position
+            // top: 0, // Change this value to your desired position
             behavior: 'smooth' // Optional: adds smooth scrolling
           });
         }
@@ -85,8 +87,11 @@ function RadioNitrozRegister() {
       .catch(err =>{
         setformerror(err)
         console.log(err)
+      }).finally(errr =>{
+        console.log("hello")
+        setloading(false)
       })
-      console.log(first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking)  
+      // console.log(first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking)  
   }
   return (
     <>
@@ -183,7 +188,7 @@ function RadioNitrozRegister() {
       {/*Message to us */}
       <div className='flex flex-col gap-2'>
         <h4 className='vmd:text-[20px]'>Message to us</h4>
-      <input type='text' required onChange={(e)=>{setmessage(e.target.value)}} name={"n9"} placeholder='Message to us' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600  '/>
+      <input type='text' required onChange={(e)=>{setmessage(e.target.value)}} name={"n9"} placeholder='Message to us' className='xl:w-[25vw] md:w-[40vw] sm:w-[40vw] vmd:w-[80vw] outline-none border-b-[3px] border-yellow-300 bg-black vmd:text-[16px] vmd:py-[5px] py-[10px] px-[10px] text-white text-2xl hover:opacity-75 transition-all focus:bg-slate-600 '/>
       </div>
        {/* Club preference */}
        <div className='flex flex-col gap-2'>
@@ -237,13 +242,14 @@ function RadioNitrozRegister() {
           <option>5</option>
         </select>
       </div>
-
+      {/* submit */}
        <div>
-        <button type='submit' className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400' >Submit</button>
+        <button type='submit' disabled={loading} className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400' >Submit</button>
+        {loading && <p className='text-red-700 text-center font-bold'>Saving data... Please wait.</p>}
       </div>
-
     </form>
     </div>
+      
     </>
   )
 }
