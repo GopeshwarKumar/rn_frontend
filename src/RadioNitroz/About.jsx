@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 function About() {
   return (
     <>
-    <div className='w-screen mt-[7%] bg-slate-500 h-[2px]'>a</div>
+    <div className='w-screen mt-[7%] bg-slate-500 h-[2px]'></div>
     <div className=''>
       <h1 className='px-[3vw] text-black font-serif p-3 animate-pulse'>About Us</h1>
       <motion.p whileInView={{opacity:1}} transition={{duration:2}} className='text-black md:px-[15vw] py-[4vh] vmd:px-[5vw] lg:text-[20px] sm:text-[17px] mb:text-[15px] vmd:text-[12px] opacity-0 '>

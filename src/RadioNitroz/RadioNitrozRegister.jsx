@@ -68,18 +68,13 @@ function RadioNitrozRegister() {
     e.preventDefault();
     setloading(true);
     // const notify = () => toast("Wow so easy!")
-    // Form validation
-    if (!first || !Department || !roll || !year || !mobile || !email || !message || !clubpre || !webdev || !RateCreativity || !RateManagement || !RateHardworking) {
-      setformerror('Please fill in all fields.');
-      return;
-    }
     
       axios.post("https://rn-backend-8wgt.onrender.com/formdata",{first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking})
       .then(res =>{
         if(res.status===200){
           toast.success("Submited")
           window.scrollTo({
-            // top: 0, // Change this value to your desired position
+            top: 0, // Change this value to your desired position
             behavior: 'smooth' // Optional: adds smooth scrolling
           });
         }
@@ -88,7 +83,6 @@ function RadioNitrozRegister() {
         setformerror(err)
         console.log(err)
       }).finally(errr =>{
-        console.log("hello")
         setloading(false)
       })
       // console.log(first,Department,roll,year,mobile,email,message,clubpre,webdev,RateCreativity,RateManagement,RateHardworking)  
@@ -99,39 +93,8 @@ function RadioNitrozRegister() {
     <div className='w-screen min-h-screen text-black bg-no-repeat bg-cover bg-slate-800 bg-center '>
     <div className='w-screen cursor-pointer flex items-center justify-center gap-4'>
 
-    {/* <div className='flex '>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px]  duration-300'>R</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px]  vmd:first-letter:text-[40px] lg:first-letter:text-[50px] hover:rotate-180 duration-300'>a</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px]  vmd:first-letter:text-[40px] lg:first-letter:text-[50px] hover:-translate-y-2 duration-300'>d</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px]  vmd:first-letter:text-[40px] lg:first-letter:text-[50px] hover:skew-x-6 duration-300'>i</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px]  vmd:first-letter:text-[40px] lg:first-letter:text-[50px] hover:-translate-y-2 duration-300'>o</h1>
-    </div>
-    <div className='flex'>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-x-1 duration-300'>N</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-2'>I</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>T</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>r</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>o</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>z</h1>
-    </div>
-    <div className='flex'>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>A</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>u</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>d</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>i</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>t</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>i</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>o</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:-translate-y-1 duration-300'>n</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 sm:text-[50px] vmd:text-[30px] hover:translate-y-1 duration-300'>s</h1>
-    </div>
-    <div className='flex'>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 4m:text-[50px] vmd:text-[30px] hover:skew-y-1 duration-300'>'2</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 4m:text-[50px] vmd:text-[30px] hover:skew-x-2 duration-300'>0</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 4m:text-[50px] vmd:text-[30px] hover:skew-y-1 duration-300'>2</h1>
-    <h1 className='font-bold text-center py-[5vh] text-yellow-400 4m:text-[50px] vmd:text-[30px] hover:skew-x-2 duration-300'>5</h1>
-    </div> */}
-    <p className='text-yellow-400 font-bold text-center py-[5vh] sm:text-[50px] vmd:text-[30px] hover:skew-y-1 duration-300'>Radio Nitroz Audition's 2025</p>
+
+    <p className='auditiontext text-yellow-400 font-bold text-center py-[5vh] sm:text-[50px] vmd:text-[30px] hover:skew-y-1 duration-300'>Radio Nitroz Audition's 2025</p>
 
     </div>
     <h2 className='text-center'>{formerror}</h2>
@@ -245,7 +208,7 @@ function RadioNitrozRegister() {
       {/* submit */}
        <div>
         <button type='submit' disabled={loading} className='outline-none bg-black text-2xl px-[20px] py-[5px] rounded text-white duration-500 bg-gradient-to-tr from-red-400 to-purple-500  focus:bg-green-400' >Submit</button>
-        {loading && <p className='text-red-700 text-center font-bold'>Saving data... Please wait.</p>}
+        {loading && <p className='text-red-700 text-center font-bold'>Saving data...</p>}
       </div>
     </form>
     </div>

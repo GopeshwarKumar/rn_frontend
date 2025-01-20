@@ -18,10 +18,10 @@ function Contact() {
 
       <div className='flex gap-5 flex-col'>
 
-      <motion.h3 whileInView={{opacity:1}} transition={{duration:2}} className='font-bold opacity-0 sm:flex flex-col gap-4'>
-      <p><MdEmail className='text-red-500 vmd:text-[36px] sm:text-[40px] lg:text-[60px] hover:translate-y-3 transition-all '/></p>
-      <p className='lg:text-[32px] sm:text-[25px] vmd:text-[20px] text-white'>radionitroz.nitdgp@gmail.com</p>
-      </motion.h3>
+      <h3 className='font-bold sm:flex flex-col gap-4'>
+      <motion.p whileInView={{opacity:1 ,translateX:"20px"}} transition={{duration:2}}><MdEmail className='text-red-500 vmd:text-[36px] sm:text-[40px] lg:text-[60px] hover:translate-y-3 transition-all '/></motion.p>
+      <motion.p whileInView={{opacity:1 ,}} transition={{duration:0.5}}  className='lg:text-[32px] text-opacity:0 sm:text-[25px] vmd:text-[20px] text-white'>radionitroz.nitdgp@gmail.com</motion.p>
+      </h3>
 
     <br/>
 
